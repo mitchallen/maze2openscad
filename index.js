@@ -33,14 +33,15 @@ module.exports.create = function (spec) {
         writeDataFile: function(filename) {
             var stream = fs.createWriteStream(filename);
             var fd = "// code generated maze data\n";
-            fd += util.format("rows = %s;\n", _y);
             fd += util.format("columns = %s;\n", _x);
+            fd += util.format("rows = %s;\n", _y);
             var perfect = true;
             let dirMap = this.getDirMap();
             fd += "connections = [\n";
             fd += "//  [r,c,S,E]\n// S = 0, cut South Wall\n// E = 0, cut East Wall\n";
-            for(var y = 0; y < _y; y++) {
-                for(var x = 0; x < _x; x++) {
+            for(var x = 0; x < _x; x++) {
+                fd += util.format("// Column: %s;\n", x);
+                for(var y = 0; y < _y; y++) {
                     if( this.get(x,y)===0) {
                         perfect = false;
                     }

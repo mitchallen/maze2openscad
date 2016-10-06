@@ -61,7 +61,7 @@ describe('module smoke test', function() {
         should.exist(mazeGenerator);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
-        mazeGenerator.writeDataFile(_outputFolder + 'maze-data.scad')
+        mazeGenerator.writeDataFile(_outputFolder + 'maze-data.scad');
         done();
     });
 });

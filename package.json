@@ -1,7 +1,7 @@
 {
   "name": "@mitchallen/maze2openscad",
   "version": "0.1.0",
-  "description": "",
+  "description": "Code generate a maze as an OpenSCAD include file",
   "main": "index.js",
   "scripts": {
     "//": "To use: npm run test-nodemon (assumes global location of mocha)",
