@@ -66,7 +66,9 @@ describe('module smoke test', function() {
     });
 
     it('writeDataFile for a masked maze should generate a masked maze data file', function(done) {
-        var mazeGenerator = _module.create({ x: 5, y: 6 });
+        let xSize = 10;
+        let ySize = 10;
+        var mazeGenerator = _module.create({ x: xSize, y: ySize });
         should.exist(mazeGenerator);
         let spec = {
             start: { c: 3, r: 3 },
@@ -75,6 +77,12 @@ describe('module smoke test', function() {
                 { c: 0, r: 1 },
                 { c: 1, r: 0 },
                 { c: 1, r: 1 },
+                { c: 4, r: 4 },
+                { c: 4, r: 5 },
+                { c: 5, r: 5 },
+                { c: 8, r: 1 },
+                { c: 8, r: 8 },
+                { c: 9, r: 9 },
             ]
         };
         mazeGenerator.generate(spec);
