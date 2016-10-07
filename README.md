@@ -95,4 +95,8 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 * updated examples to use published module
 
+#### Version 0.1.2 
+
+* uses latest maze generator to allow masked mazes
+
 * * *

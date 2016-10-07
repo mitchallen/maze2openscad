@@ -64,4 +64,22 @@ describe('module smoke test', function() {
         mazeGenerator.writeDataFile(_outputFolder + 'maze-data.scad');
         done();
     });
+
+    it('writeDataFile for a masked maze should generate a masked maze data file', function(done) {
+        var mazeGenerator = _module.create({ x: 5, y: 6 });
+        should.exist(mazeGenerator);
+        let spec = {
+            start: { c: 3, r: 3 },
+            mask: [
+                { c: 0, r: 0 },
+                { c: 0, r: 1 },
+                { c: 1, r: 0 },
+                { c: 1, r: 1 },
+            ]
+        };
+        mazeGenerator.generate(spec);
+        mazeGenerator.printBoard();
+        mazeGenerator.writeDataFile(_outputFolder + 'maze-masked-data.scad');
+        done();
+    });
 });
