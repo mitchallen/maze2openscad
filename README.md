@@ -87,16 +87,20 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
-#### Version 0.1.0 
+#### Version 0.1.3
 
-* initial release
+* updated to latest maze generator to allow square, circle, hexagon and triangle
+
+#### Version 0.1.2 
+
+* uses latest maze generator to allow masked mazes
 
 #### Version 0.1.1 
 
 * updated examples to use published module
 
-#### Version 0.1.2 
+#### Version 0.1.0 
 
-* uses latest maze generator to allow masked mazes
+* initial release
 
 * * *

@@ -24,7 +24,7 @@ module.exports.create = function (spec) {
         x: _x,
         y: _y
     };
-    var _maze = mazeFactory.create(_gridSpec);
+    var _maze = mazeFactory.Square(_gridSpec);
     if(!_maze) {
         return null;
     }
@@ -36,7 +36,7 @@ module.exports.create = function (spec) {
             fd += util.format("columns = %s;\n", _x);
             fd += util.format("rows = %s;\n", _y);
             var perfect = true;
-            let dirMap = this.getDirMap();
+            let dirMap = this.dirMap;
             fd += "connections = [\n";
             fd += "//  [r,c,S,E]\n// S = 0, cut South Wall\n// E = 0, cut East Wall\n";
             for(var x = 0; x < _x; x++) {

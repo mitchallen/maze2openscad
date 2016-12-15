@@ -26,6 +26,6 @@
     "supertest": "^2.0.0"
   },
   "dependencies": {
-    "@mitchallen/maze-generator": "^0.1.4"
+    "@mitchallen/maze-generator": "^0.1.15"
   }
 }
