@@ -38,7 +38,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
 	    var mazeFactory = require("@mitchallen/maze2openscad");
 
-	    var mazeGenerator = mazeFactory.create({ x: 5, y: 6 });
+	    var mazeGenerator = mazeFactory.Square({ x: 5, y: 6 });
 	
         mazeGenerator.generate();
     
@@ -86,6 +86,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.1
+
+* The __create__ method is deprecated in favor of __Square__
+* Bumped version number because breaking backward compatability
 
 #### Version 0.1.3
 

@@ -8,7 +8,7 @@
 
 var request = require('supertest'),
     should = require('should'),
-    modulePath = "../index";
+    modulePath = "../../index";
 
 describe('module smoke test', function() {
 
@@ -44,20 +44,20 @@ describe('module smoke test', function() {
         done();
     });
 
-    it('create method with no spec should return null', function(done) {
-        var mazeGenerator = _module.create();
+    it('Square method with no spec should return null', function(done) {
+        var mazeGenerator = _module.Square();
         should.not.exist(mazeGenerator);
         done();
     });
 
-    it('create method with valid x and y parameters should return object', function(done) {
-        var mazeGenerator = _module.create({ x: 5, y: 5 });
+    it('Square method with valid x and y parameters should return object', function(done) {
+        var mazeGenerator = _module.Square({ x: 5, y: 5 });
         should.exist(mazeGenerator);
         done();
     });
 
     it('writeDataFile for a 5 x 6 maze should generate a maze data file', function(done) {
-        var mazeGenerator = _module.create({ x: 5, y: 6 });
+        var mazeGenerator = _module.Square({ x: 5, y: 6 });
         should.exist(mazeGenerator);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
@@ -68,7 +68,7 @@ describe('module smoke test', function() {
     it('writeDataFile for a masked maze should generate a masked maze data file', function(done) {
         let xSize = 10;
         let ySize = 10;
-        var mazeGenerator = _module.create({ x: xSize, y: ySize });
+        var mazeGenerator = _module.Square({ x: xSize, y: ySize });
         should.exist(mazeGenerator);
         let spec = {
             start: { c: 3, r: 3 },
