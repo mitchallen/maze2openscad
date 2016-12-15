@@ -1,6 +1,6 @@
 {
   "name": "@mitchallen/maze2openscad",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Code generate a maze as an OpenSCAD include file",
   "main": "index.js",
   "scripts": {
