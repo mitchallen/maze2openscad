@@ -8,7 +8,8 @@
 
 "use strict";
 
-var squareMaze = require('./lib/square');
+var squareMaze = require('./lib/square'),
+    circleMaze = require('./lib/circle');
 
 var createMaze = (spec) => {
     console.warn("@mitchallen/maze2openscad: .create is deprecated. Use .Square instead.");
@@ -17,5 +18,6 @@ var createMaze = (spec) => {
 
 module.exports = {
     create: createMaze,
-    Square: squareMaze
+    Square: squareMaze,
+    Circle: circleMaze
 };
