@@ -1,7 +1,7 @@
 
 var mazeFactory = require("@mitchallen/maze2openscad");
 
-var mazeGenerator = mazeFactory.create({ x: 5, y: 6 });
+var mazeGenerator = mazeFactory.Square({ x: 5, y: 6 });
 
 mazeGenerator.generate();
 

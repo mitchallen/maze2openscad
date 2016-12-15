@@ -87,6 +87,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.2.2
+
+* updated examples to use __Square__
+
 #### Version 0.2.1
 
 * The __create__ method is deprecated in favor of __Square__
