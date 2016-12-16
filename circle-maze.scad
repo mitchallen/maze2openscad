@@ -9,6 +9,10 @@ floorColor = [0,1,0];
 wallColor = [0,0,0];
 ringColor = [1,0,0];
 
+function spokeColor(i) = i ? ( i == 1 ? "green": "red") : "blue";
+
+function cutColor(i) = i ? ( i == 1 ? "green": "black") : "blue";
+
 module drawSpokes(rd,armLength=5,fromCenter=5) {
     ringId = rd[0];
     arms = rd[1];
@@ -21,17 +25,16 @@ module drawSpokes(rd,armLength=5,fromCenter=5) {
     
     union()  // Union isn't strictly necessary because everything at the top level is implicitly unioned
     { 
-        for (i=[1:arms]) {
-                color(ringColor)
+        for (i=[0:arms-1]) {
+                color(spokeColor(i))
                 rotate([0,0,360/arms*i]) // Rotate the arm after it's centered
                 translate([fromCenter,-ArmWide/2,0]) // Center the arm around the X axis
-                cube([armLength * rd[i * 2], ArmWide, ArmHigh]); // Make the arm extend along the X axis
+                cube([armLength * rd[i * 2 + 2], ArmWide, ArmHigh]); // 
             }
-
-        // rotate(ArmsOnEdges ? 180/NoArm : 0) // Rotate the polygon to it's side if so desired
-            // cylinder(h=ArmHigh, r=CircRadius, $fn=NoArm);  // The polygon, as a cylinder with a particular number of sides
     } 
 }
+
+
 
 module cutSpokes(rd,armLength=5,fromCenter=5) {
     ringId = rd[0];
@@ -46,14 +49,11 @@ module cutSpokes(rd,armLength=5,fromCenter=5) {
     union()  // Union isn't strictly necessary because everything at the top level is implicitly unioned
     { 
         rotate([0,0,360/arms*0.5])  // offset from spokes
-        for (i=[1:arms]) 
-                color([0,1,0])
+        for (i=[0:arms-1]) 
+                color(cutColor(i))
                 rotate([0,0,360/arms*i]) // Rotate the arm after it's centered
                 translate([fromCenter,-ArmWide/2,0]) // Center the arm around the X axis
-                cube([armLength * rd[ i * 2 + 1 ], ArmWide, ArmHigh]); // Make the arm extend along the X axis
-
-        // rotate(ArmsOnEdges ? 180/NoArm : 0) // Rotate the polygon to it's side if so desired
-            // cylinder(h=ArmHigh, r=CircRadius, $fn=NoArm);  // The polygon, as a cylinder with a particular number of sides
+                cube([armLength * rd[ i * 2 + 3 ], ArmWide, ArmHigh]);
     } 
 }
 
@@ -114,7 +114,8 @@ module cutWalls() {
 
 module main() {
     union() {
-        difference() {
+        // difference() {
+        union() {
             drawMazePanel();
             cutWalls();
         }
