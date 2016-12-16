@@ -17,9 +17,6 @@ ArmHigh = ringHeight; // The height (along the Z axis) of the arms
 cutHeight = ringHeight * 2; // to remove slivers
 
 module drawRing(ringId) {
-    /*
-    That’s it one simple ring that is 2.5mm wide, 1.5mm thick, and has a center cut out for a 16.1mm diameter finger
-    */
     
     innerDiameter = ringId * innerRadius * 2;
       
