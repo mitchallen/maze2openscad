@@ -87,6 +87,8 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+* added __Circle__ method
+
 #### Version 0.2.2
 
 * updated examples to use __Square__
