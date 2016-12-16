@@ -83,4 +83,13 @@ describe('module smoke test', function() {
         mazeGenerator.writeDataFile(_outputFolder + 'circle-maze-masked-data.scad');
         done();
     });
+
+    it('writeDataFile for a 11 ring maze should generate a maze data file', function(done) {
+        var mazeGenerator = _module.Circle({ rings: 11 });
+        should.exist(mazeGenerator);
+        mazeGenerator.generate();
+        mazeGenerator.printBoard();
+        mazeGenerator.writeDataFile(_outputFolder + 'circle-maze-data.scad');
+        done();
+    });
 });
