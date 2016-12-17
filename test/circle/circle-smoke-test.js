@@ -50,8 +50,21 @@ describe('module smoke test', function() {
         done();
     });
 
-    it('Circle method with valid x and y parameters should return object', function(done) {
-        var mazeGenerator = _module.Circle({ rings: 5 });
+    it('Circle method with valid parameters should return object', function(done) {
+        var options = { 
+            rings: 5,
+            ringHeight: 6,
+            ringThickness: 1.5,
+            outerThickness: 3,
+            ringCutWidth: 5,
+            innerRadius: 6, // inside of ring
+            middleRadius: 18,
+            middleHole: false,
+            spokeWidth:0.5,
+            hasFloor: false,
+            floorHeight: 2
+        };
+        var mazeGenerator = _module.Circle(options);
         should.exist(mazeGenerator);
         done();
     });
@@ -86,6 +99,28 @@ describe('module smoke test', function() {
 
     it('writeDataFile for a 11 ring maze should generate a maze data file', function(done) {
         var mazeGenerator = _module.Circle({ rings: 11 });
+        should.exist(mazeGenerator);
+        mazeGenerator.generate();
+        mazeGenerator.printBoard();
+        mazeGenerator.writeDataFile(_outputFolder + 'circle-maze-data.scad');
+        done();
+    });
+
+    it('writeDataFile for a 6 ring maze with parameters should generate a maze data file', function(done) {
+        var options = { 
+            rings: 6,
+            ringHeight: 6,
+            ringThickness: 1.5,
+            outerThickness: 3,
+            ringCutWidth: 6,
+            innerRadius: 12, // inside of ring
+            middleRadius: 6,
+            middleHole: false,
+            spokeWidth:0.5,
+            hasFloor: false,
+            floorHeight: 2
+        };
+        var mazeGenerator = _module.Circle(options);
         should.exist(mazeGenerator);
         mazeGenerator.generate();
         mazeGenerator.printBoard();
