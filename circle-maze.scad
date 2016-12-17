@@ -9,18 +9,20 @@ function spokeColor(i) = i ? ( i == 1 ? "green": "red") : "blue";
 function cutColor(i) = i ? ( i == 1 ? "green": "black") : "blue";
 floorColor = "white";
 
-innerRadius = 6;
-middleRadius = 18;
-ringThickness = 1.5;
-outerThickness = ringThickness * 2;
-floorHeight = 2;
-ringHeight = 6;
-ArmWide = 0.5; // The width of the arms
-cutWidth = 5;
-ArmHigh = ringHeight; // The height (along the Z axis) of the arms
-cutHeight = ringHeight * 2; // to remove slivers
-middleHole = true;
-hasFloor = true;
+// innerRadius = 6;
+// middleRadius = 18;
+// ringThickness = 1.5;
+// outerThickness = ringThickness * 2;
+// floorHeight = 2;
+// ringHeight = 6;
+// ringCutWidth = 5;
+// spokeWidth = 0.5; // The width of the spokes
+
+// middleHole = true;
+// hasFloor = true;
+
+spokeHeight = ringHeight; // The height (along the Z axis) of the spokes
+ringCutHeight = ringHeight * 2; // to remove slivers
 
 module drawMazeFloor() {
     
@@ -33,13 +35,14 @@ module drawMazeFloor() {
         thickness = ringThickness 
             + innerRadius * (len(ringData)-1)
             + outerThickness - ringThickness
-            + (middleHole == true ? 0 : middleRadius);
+            + (middleHole ? 0 : middleRadius);
     
         yPos = 0 - floorHeight / 2 - ringHeight / 2;
       
         color(floorColor) 
             rotate_extrude() 
-                translate([(middleRadius)+(thickness/2),yPos,0]) 
+                // translate([(middleRadius)+(thickness/2),yPos,0]) 
+                translate([(middleHole ? middleRadius : 0)+(thickness/2),yPos,0])
                 square([thickness,floorHeight],center=true);
     }
 }
@@ -88,8 +91,8 @@ module drawSpokes(rd,armLength=5,fromCenter=5) {
         for (i=[0:arms-1]) {
                 color(spokeColor(i))
                 rotate([0,0,-360/arms*(i + 1)]) // Rotate the arm after it's centered
-                translate([fromCenter,-ArmWide/2,-ArmHigh/2]) // Center the arm around the X axis
-                cube([armLength * rd[i * 2 + 2], ArmWide, ArmHigh]); // 
+                translate([fromCenter,-spokeWidth/2,-spokeHeight/2]) // Center the arm around the X axis
+                cube([armLength * rd[i * 2 + 2], spokeWidth, spokeHeight]); // 
             }
     } 
 }
@@ -108,11 +111,11 @@ module cutSpokes(rd,armLength=5,fromCenter=5) {
         for (i=[0:arms-1]) 
                 color(cutColor(i))
                 rotate([0,0,-360/arms*i]) // Rotate the arm after it's centered
-                translate([cutCenter,-cutWidth/2,-cutHeight/2]) // Center the arm around the X axis
+                translate([cutCenter,-ringCutWidth/2,-ringCutHeight/2]) // Center the arm around the X axis
                 cube(
                     [(padding + ringThickness) * (rd[ i * 2 + 3 ] ? 0 : 1), 
-                    cutWidth, 
-                    cutHeight * 2]
+                    ringCutWidth, 
+                    ringCutHeight * 2]
                 );
     } 
 }
