@@ -116,7 +116,8 @@ describe('module smoke test', function() {
             innerRadius: 12, // inside of ring
             middleRadius: 6,
             middleHole: false,
-            spokeWidth:0.5,
+            // spokeWidth: 0.5, // Too thin?
+            spokeWidth: 2, // Too thin?
             hasFloor: false,
             floorHeight: 2
         };
